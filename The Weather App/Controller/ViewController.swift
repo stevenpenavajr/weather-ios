@@ -7,18 +7,38 @@
 //
 
 import UIKit
+import CoreLocation
+import Alamofire
+import SwiftyJSON
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     // MARK: Outlets and class variables
+    /* ------------------------------------------------------------------ */
     @IBOutlet weak var cityView: UIView!
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    @IBOutlet weak var textRecommendationLabel: UILabel!
+    
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    let API_KEY     = "14353c70d516758f4e44812a41d5ecb0"
+    
+    let locationManager = CLLocationManager()
+    let weatherDataModel = WeatherDataModel()
     
     // Upon loading...
     override func viewDidLoad() {
         super.viewDidLoad()
+        textRecommendationLabel.isHidden = true
         animateLabelAppearance()
+        
+        // Setting ViewController.swift as the delegate for the CoreLocation data reporting
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
 
     }
 
@@ -26,8 +46,64 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: User interface-related functions
+    /* ------------------------------------------------------------------ */
+    func updateUIWithWeatherData() {
+        cityLabel.text = weatherDataModel.city
+        tempLabel.text = String(weatherDataModel.temperature) + "º"
+        weatherDescriptionLabel.text = weatherDataModel.condition
+    }
+    
+    // MARK: JSON & API interaction functions
+    /* ------------------------------------------------------------------ */
+    func getWeatherData(url:String, parameters:[String:String]) {
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
+            response in
+            if response.result.isSuccess { // triggered when background process is completed
+                print("Success! Got the weather data.")
+                
+                // Response into JSON
+                let weatherJSON : JSON = JSON(response.result.value!) // comes in an optional
+                print(weatherJSON)
+                self.updateWeatherData(json: weatherJSON)
+                
+            } else {
+                print("Error \(response.result.error)")
+                self.cityLabel.text = "Error."
+            }
+        }
+    }
+    
+    func updateWeatherData(json : JSON) {
+        if let tempResult = json["main"]["temp"].double {
+            weatherDataModel.temperature     = Int(convertUnit(to: "F", from: "K", num: tempResult))
+            weatherDataModel.city            = json["name"].stringValue
+            weatherDataModel.condition       = json["weather"][0]["description"].stringValue
+            updateUIWithWeatherData()
+        } else {
+            cityLabel.text = "Weather Unavailable."
+            print("err")
+        }
+    }
+    
+    // MARK: CoreLocation manager delegate methods
+    /* ------------------------------------------------------------------ */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLocation = locations[locations.count - 1]
+        if currentLocation.horizontalAccuracy > 0 { // check to ensure location is valid
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil // to stop getting location data so it only prints once
+            let latitude  = String(currentLocation.coordinate.latitude)
+            let longitude = String(currentLocation.coordinate.longitude)
+            
+            let callParams : [String: String] = ["lat": latitude, "lon": longitude, "appid" : API_KEY]
+            getWeatherData(url: WEATHER_URL, parameters: callParams)
+        }
+    }
     
     // MARK: Animation functions
+    /* ------------------------------------------------------------------ */
     
     // Making text fade in
     func animateLabelAppearance() {
@@ -35,6 +111,30 @@ class ViewController: UIViewController {
         cityView.alpha = 0.0
         cityView.fadeIn()
         weatherView.fadeIn()
+    }
+    
+    // MARK: Utility functions
+    /* ------------------------------------------------------------------ */
+    func convertUnit(to:String, from:String, num:Double) -> Double {
+        if from == "K" && to == "F" {
+            return num * 1.8 - 459.67
+        }
+        return 0.0
+//        switch from {
+//            case "K":
+//                print("KKKK")
+//                if "to" == "F" {
+//                    print("S")
+//                    return num * 1.8 - 459.67
+//                }
+//            case "F":
+//                print()
+//            case "C":
+//                print()
+//            default:
+//                print()
+//        }
+//        return 0.0
     }
 
 

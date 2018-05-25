@@ -9,5 +9,7 @@
 import Foundation
 
 class WeatherDataModel {
-    var temperature:Int?
+    var temperature:Int           = 0
+    var condition:String          = ""
+    var city:String               = ""
 }
