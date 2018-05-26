@@ -33,19 +33,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textRecommendationLabel.isHidden = true
-        self.view.backgroundColor = backGroundColorModel.getBackGroundColorBasedOnTemp(temperature: weatherDataModel.temperature, unit: "F")
         
+        // When to animate label appearance? This causes an issue when asking for location access.
         animateLabelAppearance()
-        // When to animate label appearance?
-        
+
         
         // Setting ViewController.swift as the delegate for the CoreLocation data reporting
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        
         
        
 
@@ -59,6 +56,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: User interface-related functions
     /* ------------------------------------------------------------------ */
     func updateUIWithWeatherData() {
+        self.view.backgroundColor = backGroundColorModel.getBackGroundColorBasedOnTemp(temperature: weatherDataModel.temperature, unit: "F")
+        print(weatherDataModel.temperature)
         cityLabel.text = weatherDataModel.city
         tempLabel.text = String(weatherDataModel.temperature) + "º"
         weatherDescriptionLabel.text = weatherDataModel.condition

@@ -18,22 +18,20 @@ class BackgroundColorModel {
     func getBackGroundColorBasedOnTemp(temperature:Int, unit:String) -> UIColor {
         switch temperature {
             case -999...32:
-                print()
-                return UIColor("#b281ff")!
+                // Freezing and below
+                return UIColor("#030072")!
             case 33...55:
-                print()
-                return UIColor("#b281ff")!
+                // Light blue (cold)
+                return UIColor("#7712B2")!
             case 56...70:
-                print()
-                return UIColor("#b281ff")!
+                // Green (Nice to chilly)
+                return UIColor("#02B22B")!
             case 71...80:
-                print()
-                return UIColor("#33d0ff")!
-            case 81...100:
-                return UIColor("#ff6e02")!
-            case 100...999:
-                print()
-                return UIColor("#ff0119")!
+                // Orange (Nice day)
+                return UIColor("#e55300")!
+            case 81...999:
+                // Dark red (Hot)
+                return UIColor("#B50000")!
             default:
                 print()
         }
