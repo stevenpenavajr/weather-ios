@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A425EB320B98585008EA30E /* BackgroundColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A425EB220B98585008EA30E /* BackgroundColorModel.swift */; };
 		0A5B387A20B7A9A70041B6FA /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B387220B77CF00041B6FA /* Montserrat-Black.otf */; };
 		0A5B387B20B7A9A70041B6FA /* Montserrat-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B386A20B77CEF0041B6FA /* Montserrat-BlackItalic.otf */; };
 		0A5B387C20B7A9A70041B6FA /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B387120B77CF00041B6FA /* Montserrat-Bold.otf */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A425EB220B98585008EA30E /* BackgroundColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorModel.swift; sourceTree = "<group>"; };
 		0A5B385620B77CED0041B6FA /* MontserratAlternates-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraBold.otf"; sourceTree = "<group>"; };
 		0A5B385720B77CED0041B6FA /* Montserrat-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.otf"; sourceTree = "<group>"; };
 		0A5B385820B77CED0041B6FA /* MontserratAlternates-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Bold.otf"; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				0A5B38A120B7AA060041B6FA /* WeatherDataModel.swift */,
-				0AFDD16620B85E42003B0DB7 /* UIViewExtensions.swift */,
+				0A425EB220B98585008EA30E /* BackgroundColorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +184,7 @@
 			children = (
 				0AE6AAF220B77BDF0033408B /* AppDelegate.swift */,
 				0AE6AAF420B77BDF0033408B /* ViewController.swift */,
+				0AFDD16620B85E42003B0DB7 /* UIViewExtensions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,11 +350,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-The Weather App/Pods-The Weather App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +392,7 @@
 				0AE6AAF520B77BDF0033408B /* ViewController.swift in Sources */,
 				0AE6AAF320B77BDF0033408B /* AppDelegate.swift in Sources */,
 				0AFDD16720B85E42003B0DB7 /* UIViewExtensions.swift in Sources */,
+				0A425EB320B98585008EA30E /* BackgroundColorModel.swift in Sources */,
 				0A5B38A220B7AA060041B6FA /* WeatherDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

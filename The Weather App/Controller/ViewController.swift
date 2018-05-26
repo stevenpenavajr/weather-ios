@@ -27,18 +27,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
+    let backGroundColorModel = BackgroundColorModel()
     
     // Upon loading...
     override func viewDidLoad() {
         super.viewDidLoad()
         textRecommendationLabel.isHidden = true
+        self.view.backgroundColor = backGroundColorModel.getBackGroundColorBasedOnTemp(temperature: weatherDataModel.temperature, unit: "F")
+        
         animateLabelAppearance()
+        // When to animate label appearance?
+        
         
         // Setting ViewController.swift as the delegate for the CoreLocation data reporting
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        
+        
+       
 
     }
 
@@ -57,6 +66,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: JSON & API interaction functions
     /* ------------------------------------------------------------------ */
+    
+    /* Gets weather data with Alamofire */
     func getWeatherData(url:String, parameters:[String:String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
             response in
@@ -65,7 +76,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
                 // Response into JSON
                 let weatherJSON : JSON = JSON(response.result.value!) // comes in an optional
-                print(weatherJSON)
                 self.updateWeatherData(json: weatherJSON)
                 
             } else {
@@ -75,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    /* Updates data model and calls UI update */
     func updateWeatherData(json : JSON) {
         if let tempResult = json["main"]["temp"].double {
             weatherDataModel.temperature     = Int(convertUnit(to: "F", from: "K", num: tempResult))
@@ -89,6 +100,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: CoreLocation manager delegate methods
     /* ------------------------------------------------------------------ */
+    
+    /* Got current location */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations[locations.count - 1]
         if currentLocation.horizontalAccuracy > 0 { // check to ensure location is valid
@@ -102,10 +115,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    /* Handle event of location settings changing */
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            print("Not yet determined.")
+        case .authorizedWhenInUse:
+            print("Authorized when in use.")
+            
+            // Load UI
+//            animateLabelAppearance()
+            
+        case .authorizedAlways:
+            print("Authorized always")
+        case .restricted:
+            print("Authorization Restricted.")
+        case .denied:
+            print("Authorization Denied.")
+        default:
+            break
+        }
+    }
+    
     // MARK: Animation functions
     /* ------------------------------------------------------------------ */
     
-    // Making text fade in
+    /* Making text fade in */
     func animateLabelAppearance() {
         weatherView.alpha = 0.0
         cityView.alpha = 0.0
@@ -115,28 +150,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: Utility functions
     /* ------------------------------------------------------------------ */
+    
+    /* Unit conversion */
     func convertUnit(to:String, from:String, num:Double) -> Double {
         if from == "K" && to == "F" {
             return num * 1.8 - 459.67
         }
         return 0.0
-//        switch from {
-//            case "K":
-//                print("KKKK")
-//                if "to" == "F" {
-//                    print("S")
-//                    return num * 1.8 - 459.67
-//                }
-//            case "F":
-//                print()
-//            case "C":
-//                print()
-//            default:
-//                print()
-//        }
-//        return 0.0
     }
-
-
 }
 

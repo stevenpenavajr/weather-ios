@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
     func fadeIn() {
         UIView.animate(withDuration: 0.5, delay: 0.5, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.alpha = 1.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
+            self.alpha = 1.0
         }, completion: nil)
     }
     

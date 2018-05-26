@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (4.7.2)
+  - HexColors (6.0.0)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - Alamofire
+  - HexColors
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - HexColors
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  HexColors: f8c66339541a74bb08905bfe7cd4f8cc85e9e173
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 424f869b9d190493cf78dfd7caaea0a78f9fbe57
+PODFILE CHECKSUM: b19219c4575bfe66d35016376ab52b81b3c9cdb2
 
 COCOAPODS: 1.5.2

@@ -8,5 +8,6 @@ target 'The Weather App' do
   # Pods for The Weather App
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'HexColors'
 
 end
