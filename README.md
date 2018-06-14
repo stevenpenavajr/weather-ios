@@ -1,8 +1,9 @@
 # Weather
-An iOS project that will become a unique, aesthetically pleasing weather application.
+An iOS project that will become a unique, aesthetically pleasing weather application. This is my, as well as Will's, first official iOS application project. We're excited to launch it on the app store by the end of the summer.
 
-To-do:
-  - Sunrise/sunset detection for night time
-    - https://sunrise-sunset.org/api 
+Check the issues and projects sections to see what we're currently working on.
 
-![Alt text](screen.png?raw=true "Title")
+Aiming for release date of August 20th.
+
+Important notes for later:
+- https://sunrise-sunset.org/api
