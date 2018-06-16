@@ -1,11 +1,6 @@
-//
-//  UIViewExtensions.swift
-//  The Weather App
-//
-//  Created by Steven Penava on 5/25/18.
-//  Copyright © 2018 Steven Penava. All rights reserved.
-//
+/* UIViewExtensions.swift */
 
+/* Import statements */
 import Foundation
 import UIKit
 

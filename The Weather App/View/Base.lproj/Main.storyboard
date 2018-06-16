@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,21 +32,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ca-1w-c8C">
                                 <rect key="frame" x="0.0" y="463" width="375" height="199"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6C-sN-SBV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="88º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6C-sN-SBV">
                                         <rect key="frame" x="8" y="2" width="164" height="120"/>
                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="98"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's hot and pretty humid." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lRE-y3-igY" userLabel="Weather Description">
-                                        <rect key="frame" x="15" y="123" width="347" height="40.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Cold and rainy. Great day for some Netflix." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lRE-y3-igY" userLabel="Weather Description">
+                                        <rect key="frame" x="14" y="119" width="353" height="81"/>
                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="33"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dress light. Sweat incoming." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="5Lk-PO-dC5" userLabel="Clothing Recommendation">
-                                        <rect key="frame" x="15" y="153" width="347" height="30"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -55,12 +49,10 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="lRE-y3-igY" secondAttribute="trailing" constant="13" id="1SB-sh-KmH"/>
                                     <constraint firstAttribute="height" constant="199" id="5eO-VQ-yeq"/>
-                                    <constraint firstAttribute="bottom" secondItem="5Lk-PO-dC5" secondAttribute="bottom" constant="16" id="Ev6-mQ-UrB"/>
-                                    <constraint firstAttribute="trailing" secondItem="5Lk-PO-dC5" secondAttribute="trailing" constant="13" id="JFj-Ve-SGT"/>
+                                    <constraint firstAttribute="bottom" secondItem="lRE-y3-igY" secondAttribute="bottom" constant="-3" id="BLT-IE-FIp"/>
                                     <constraint firstItem="C6C-sN-SBV" firstAttribute="leading" secondItem="7ca-1w-c8C" secondAttribute="leading" constant="8" id="LEL-TT-tke"/>
-                                    <constraint firstItem="lRE-y3-igY" firstAttribute="top" secondItem="C6C-sN-SBV" secondAttribute="bottom" constant="1" id="NSx-7w-kUu"/>
                                     <constraint firstItem="lRE-y3-igY" firstAttribute="leading" secondItem="7ca-1w-c8C" secondAttribute="leading" constant="15" id="QQg-TN-BMp"/>
-                                    <constraint firstItem="5Lk-PO-dC5" firstAttribute="leading" secondItem="7ca-1w-c8C" secondAttribute="leading" constant="15" id="mqN-8V-aU6"/>
+                                    <constraint firstItem="lRE-y3-igY" firstAttribute="top" secondItem="C6C-sN-SBV" secondAttribute="bottom" constant="2" id="lXA-lZ-5Wf"/>
                                     <constraint firstItem="C6C-sN-SBV" firstAttribute="top" secondItem="7ca-1w-c8C" secondAttribute="top" constant="2" id="trN-af-cmX"/>
                                 </constraints>
                             </view>
@@ -70,6 +62,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lexington, Kentucky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="xgF-t1-tEV" userLabel="City and State">
                                         <rect key="frame" x="24" y="43" width="327.5" height="39.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="scattered clouds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAX-aS-mWn">
+                                        <rect key="frame" x="24" y="88" width="328" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -96,14 +95,13 @@
                         <outlet property="cityLabel" destination="xgF-t1-tEV" id="umk-bC-kc4"/>
                         <outlet property="cityView" destination="SFT-uA-W1h" id="ROH-q3-Yje"/>
                         <outlet property="tempLabel" destination="C6C-sN-SBV" id="X79-xp-9rE"/>
-                        <outlet property="textRecommendationLabel" destination="5Lk-PO-dC5" id="NL4-Oq-Tct"/>
                         <outlet property="weatherDescriptionLabel" destination="lRE-y3-igY" id="dya-u8-zZf"/>
                         <outlet property="weatherView" destination="7ca-1w-c8C" id="Q5d-7I-UOp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.26600985221674"/>
+            <point key="canvasLocation" x="136.80000000000001" y="131.78410794602701"/>
         </scene>
     </scenes>
 </document>
