@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -60,10 +59,10 @@
                                     <constraint firstItem="C6C-sN-SBV" firstAttribute="top" secondItem="7ca-1w-c8C" secondAttribute="top" constant="2" id="trN-af-cmX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFT-uA-W1h">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFT-uA-W1h">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="125.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="&lt;OpenWeather City&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="xgF-t1-tEV" userLabel="City and State">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;OpenWeather City&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="xgF-t1-tEV" userLabel="City and State">
                                         <rect key="frame" x="20.5" y="43" width="335" height="39.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -84,18 +83,11 @@
                                     <constraint firstItem="xgF-t1-tEV" firstAttribute="centerY" secondItem="SFT-uA-W1h" secondAttribute="centerY" id="kgf-6z-xCo"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dress_test" translatesAutoresizingMaskIntoConstraints="NO" id="Xq7-yo-A30">
-                                <rect key="frame" x="16" y="143" width="343" height="310"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.0039215686269999999" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0036366340399052502" green="0.053509669230246859" blue="0.27637214467005078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Xq7-yo-A30" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="4wI-Eg-Smo"/>
                             <constraint firstItem="SFT-uA-W1h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Ea-nj-ba7"/>
-                            <constraint firstItem="Xq7-yo-A30" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Euk-Hx-O80"/>
-                            <constraint firstItem="7ca-1w-c8C" firstAttribute="top" secondItem="Xq7-yo-A30" secondAttribute="bottom" constant="10" id="I7r-vI-CgJ"/>
                             <constraint firstAttribute="trailing" secondItem="7ca-1w-c8C" secondAttribute="trailing" id="KLZ-oh-F1J"/>
-                            <constraint firstItem="Xq7-yo-A30" firstAttribute="top" secondItem="SFT-uA-W1h" secondAttribute="bottom" constant="17.5" id="Mv1-2w-COe"/>
                             <constraint firstItem="SFT-uA-W1h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="URh-4f-CZe"/>
                             <constraint firstAttribute="trailing" secondItem="SFT-uA-W1h" secondAttribute="trailing" id="mPe-Ur-bcY"/>
                             <constraint firstAttribute="bottom" secondItem="7ca-1w-c8C" secondAttribute="bottom" constant="5" id="nPT-eP-dr7"/>
@@ -105,7 +97,6 @@
                     <connections>
                         <outlet property="cityLabel" destination="xgF-t1-tEV" id="umk-bC-kc4"/>
                         <outlet property="cityView" destination="SFT-uA-W1h" id="ROH-q3-Yje"/>
-                        <outlet property="clothingImageView" destination="Xq7-yo-A30" id="Ald-rl-d6J"/>
                         <outlet property="recommendationLabel" destination="lRE-y3-igY" id="sZW-5v-Zj4"/>
                         <outlet property="tempLabel" destination="C6C-sN-SBV" id="X79-xp-9rE"/>
                         <outlet property="weatherDescriptionLabel" destination="ddM-gN-WVq" id="XaJ-ea-3z8"/>
@@ -117,7 +108,4 @@
             <point key="canvasLocation" x="136.80000000000001" y="131.78410794602701"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="dress_test" width="860" height="1280"/>
-    </resources>
 </document>

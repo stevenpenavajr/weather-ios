@@ -27,14 +27,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var recommendationLabel: UILabel!
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
-    @IBOutlet weak var clothingImageView: UIImageView!
     
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let API_KEY     = "14353c70d516758f4e44812a41d5ecb0"
     
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
-    let backGroundColorModel = BackgroundColorModel()
     
     /**
      * @title   : viewDidLoad()
@@ -47,13 +45,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         weatherView.isHidden = true
         cityView.isHidden = true
-        clothingImageView.isHidden = true
         locationManager.requestWhenInUseAuthorization()
         
         // TODO: Ask if male or female
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
+        print(PhrasesDataModel.Condition.Code200.temp32_49)
     }
 
     // MARK: User interface-related functions
@@ -66,7 +64,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      * @return  : none
      **/
     func updateUIWithWeatherData() {
-        self.view.backgroundColor = backGroundColorModel.getBackGroundColorBasedOnTemp(temperature: weatherDataModel.temperature, unit: "F")
         cityLabel.text = weatherDataModel.city
         tempLabel.text = String(weatherDataModel.temperature) + "º"
         weatherDescriptionLabel.text = weatherDataModel.condition
@@ -116,7 +113,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // MARK: CoreLocation manager delegate methods
+    // MARK: CoreLocation manager delegate methods (abstract to new file?)
     /* ------------------------------------------------------------------ */
     
     /**
@@ -152,7 +149,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print("Unhiding views and fading in UI.")
             weatherView.isHidden = false
             cityView.isHidden = false
-            clothingImageView.isHidden = false
             animateLabelAppearance()
         case .authorizedAlways:
             print("Authorized always")
@@ -180,7 +176,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         cityView.alpha = 0.0
         cityView.fadeIn()
         weatherView.fadeIn()
-        clothingImageView.fadeIn()
     }
 }
 

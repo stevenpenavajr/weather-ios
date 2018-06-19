@@ -22,16 +22,16 @@ class BackgroundColorModel {
                 return UIColor("#030072")!
             case 33...55:
                 // Light blue (cold)
-                return UIColor("#7712B2")!
+                return UIColor("#030072")!
             case 56...70:
                 // Green (Nice to chilly)
-                return UIColor("#02B22B")!
+                return UIColor("#030072")!
             case 71...80:
                 // Orange (Nice day)
-                return UIColor("#e55300")!
+                return UIColor("#030072")!
             case 81...999:
                 // Dark red (Hot)
-                return UIColor("#B50000")!
+                return UIColor("#030072")!
             default:
                 print()
         }
