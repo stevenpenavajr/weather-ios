@@ -12,7 +12,12 @@ import Foundation
 
 public struct PhrasesDataModel {
     
+    public static func getPhraseToUse(temp: Int, conditions: [Int] ) -> String {
+        return ""
+    }
+
     public struct Condition {
+        
         
         // MARK: Clouds Category (80x)
         /* ------------------------------------------------------------------ */

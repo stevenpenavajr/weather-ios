@@ -12,7 +12,7 @@ extension UIView {
     }
     
     func fadeOut() {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.transitionCurlUp, animations: {
             self.alpha = 0.0
         }, completion: nil)
     }

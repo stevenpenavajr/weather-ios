@@ -7,9 +7,32 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class WeatherDataModel {
-    var temperature:Int           = 0
-    var condition:String          = ""
-    var city:String               = ""
+    var temperature           :Int            = 0
+    var city                  :String         = ""
+    var primaryConditions     :[Int]          = []
+    
+    /**
+     * @title   : createConditionHierarchy(json, identifier)
+     * @purpose : get an array of code values to get the current conditions in
+     *            order of prominence (index 0 is the most prominent)
+     * @params  : json (JSON), identifier (String)
+     *              json = OpenWeather full JSON response
+     *              identifier = should be "weather" to narrow JSON down
+     * @return  : [Int] - an array of indexes with 0th index being most prominent
+     **/
+    func createConditionHierarchy(json: JSON, identifier: String) -> [Int] {
+        
+        var conditionArray : [Int] = []
+        
+        for (key, value) in json[identifier] {
+            var subJSON = json[identifier][Int(key)!]
+            let code    = subJSON["id"].intValue
+            conditionArray.append(code)
+        }
+        print(conditionArray)
+        return conditionArray
+    }
 }

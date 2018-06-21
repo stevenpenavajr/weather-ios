@@ -7,7 +7,7 @@ import Alamofire
 import SwiftyJSON
 
 /* Main ViewController */
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController {
     
     /**
      * @title   : didReceiveMemoryWarning()
@@ -51,7 +51,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
-        print(PhrasesDataModel.Condition.Code200.temp32_49)
     }
 
     // MARK: User interface-related functions
@@ -66,7 +65,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func updateUIWithWeatherData() {
         cityLabel.text = weatherDataModel.city
         tempLabel.text = String(weatherDataModel.temperature) + "º"
-        weatherDescriptionLabel.text = weatherDataModel.condition
+        recommendationLabel.text = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions)
+//        weatherDescriptionLabel.text = weatherDataModel.primaryConditions[0]
     }
     
     // MARK: JSON & API interaction functions
@@ -102,63 +102,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      * @return  : none
      **/
     func updateWeatherDataModel(json : JSON) {
-        if let tempResult                    = json["main"]["temp"].double {
-            weatherDataModel.temperature     = Int(tempResult)
-            weatherDataModel.city            = json["name"].stringValue
-            weatherDataModel.condition       = json["weather"][0]["description"].stringValue
+        if let tempResult                          = json["main"]["temp"].double {
+            weatherDataModel.temperature           = Int(tempResult)
+            weatherDataModel.city                  = json["name"].stringValue
+            weatherDataModel.primaryConditions     = weatherDataModel.createConditionHierarchy(json: json, identifier: "weather")
             updateUIWithWeatherData()
         } else {
             cityLabel.text = "Weather Unavailable."
             print("Error! Weather unavailable.")
-        }
-    }
-    
-    // MARK: CoreLocation manager delegate methods (abstract to new file?)
-    /* ------------------------------------------------------------------ */
-    
-    /**
-     * @title   : locationManager: didUpdateLocations
-     * @purpose : Handles location updating.
-     * @params  : manager (CLLocationManager), locations (CLLocation)
-     * @return  : none
-     **/
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation = locations[locations.count - 1]
-        if currentLocation.horizontalAccuracy > 0 { // check to ensure location is valid
-            locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil // to stop getting location data so it only prints once
-            let latitude  = String(currentLocation.coordinate.latitude)
-            let longitude = String(currentLocation.coordinate.longitude)
-            let callParams : [String: String] = ["lat": latitude, "lon": longitude, "appid" : API_KEY, "units":"imperial"]
-            getWeatherDataFromOpenWeather(url: WEATHER_URL, parameters: callParams)
-        }
-    }
-    
-    /**
-     * @title   : locationManager: didChangeAuthorization
-     * @purpose : Handles changes in location access authorization.
-     * @params  : manager (CLLocationManager), status (CLAuthorizationStatus)
-     * @return  : none
-     **/
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            print("Not yet determined.")
-        case .authorizedWhenInUse:
-            print("Authorized when in use.")
-            print("Unhiding views and fading in UI.")
-            weatherView.isHidden = false
-            cityView.isHidden = false
-            animateLabelAppearance()
-        case .authorizedAlways:
-            print("Authorized always")
-        case .restricted:
-            print("Authorization Restricted.")
-        case .denied:
-            print("Authorization Denied.")
-            print("We'll need your location data to function.")
-        default:
-            break
         }
     }
     
