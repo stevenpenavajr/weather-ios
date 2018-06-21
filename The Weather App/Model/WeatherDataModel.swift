@@ -13,6 +13,7 @@ class WeatherDataModel {
     var temperature           :Int            = 0
     var city                  :String         = ""
     var primaryConditions     :[Int]          = []
+    var currentDescription    :String         = ""
     
     /**
      * @title   : createConditionHierarchy(json, identifier)
@@ -32,7 +33,6 @@ class WeatherDataModel {
             let code    = subJSON["id"].intValue
             conditionArray.append(code)
         }
-        print(conditionArray)
         return conditionArray
     }
 }

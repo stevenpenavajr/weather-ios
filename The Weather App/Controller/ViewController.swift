@@ -65,8 +65,8 @@ class ViewController: UIViewController {
     func updateUIWithWeatherData() {
         cityLabel.text = weatherDataModel.city
         tempLabel.text = String(weatherDataModel.temperature) + "º"
-        recommendationLabel.text = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions)
-//        weatherDescriptionLabel.text = weatherDataModel.primaryConditions[0]
+        recommendationLabel.text = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "Male")
+        weatherDescriptionLabel.text = weatherDataModel.currentDescription
     }
     
     // MARK: JSON & API interaction functions
@@ -105,7 +105,8 @@ class ViewController: UIViewController {
         if let tempResult                          = json["main"]["temp"].double {
             weatherDataModel.temperature           = Int(tempResult)
             weatherDataModel.city                  = json["name"].stringValue
-            weatherDataModel.primaryConditions     = weatherDataModel.createConditionHierarchy(json: json, identifier: "weather")
+            weatherDataModel.primaryConditions     = weatherDataModel.createConditionHierarchy(json: json, identifier: "weather") // to be used with recommendation choosing algorithm
+            weatherDataModel.currentDescription    = json["weather"][0]["description"].stringValue
             updateUIWithWeatherData()
         } else {
             cityLabel.text = "Weather Unavailable."

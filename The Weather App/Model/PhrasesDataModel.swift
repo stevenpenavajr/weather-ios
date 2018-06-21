@@ -12,20 +12,11 @@ import Foundation
 
 public struct PhrasesDataModel {
     
-    public static func getPhraseToUse(temp: Int, conditions: [Int] ) -> String {
+    public static func getPhraseToUse(temp: Int, conditions: [Int], gender: String) -> String {
         return ""
     }
-
+    
     public struct Condition {
-        
-        
-        // MARK: Clouds Category (80x)
-        /* ------------------------------------------------------------------ */
-        
-        // *** NEEDS IMPLEMENTATION ***
-        
-        // MARK: Clear Category (800)
-        /* ------------------------------------------------------------------ */
         
         // MARK: Clear Sky (800)
         public struct Code800 {
@@ -157,7 +148,7 @@ public struct PhrasesDataModel {
                 "Looks like you gotta cancel your golf plans.",
                 "Your best bet is to avoid going outside.",
                 "Don't drive if your wipers are crappy.",
-            ]
+                ]
             
             static let temp80_100 : [String] = [
                 "Rain jacket. Or staying inside.",
