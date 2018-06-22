@@ -14,6 +14,7 @@ class WeatherDataModel {
     var city                  :String         = ""
     var primaryConditions     :[Int]          = []
     var currentDescription    :String         = ""
+    var currentRecommendation :String         = ""
     
     /**
      * @title   : createConditionHierarchy(json, identifier)
