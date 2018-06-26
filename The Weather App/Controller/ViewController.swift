@@ -91,7 +91,7 @@ class ViewController: UIViewController {
             weatherDataModel.city                  = json["name"].stringValue
             weatherDataModel.primaryConditions     = weatherDataModel.createConditionHierarchy(json: json, identifier: "weather") // to be used with recommendation choosing algorithm
             weatherDataModel.currentDescription    = json["weather"][0]["description"].stringValue
-            weatherDataModel.currentRecommendation = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "male")
+//            weatherDataModel.currentRecommendation = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "male")
             
             updateUIWithWeatherData()
         } else {
@@ -112,8 +112,9 @@ class ViewController: UIViewController {
     func updateUIWithWeatherData() {
         cityLabel.text = weatherDataModel.city
         tempLabel.text = String(weatherDataModel.temperature) + "º"
-        recommendationLabel.text = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "Male")
+//        recommendationLabel.text = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "Male")
         weatherDescriptionLabel.text = weatherDataModel.currentDescription.capitalized
+//        weatherDescriptionLabel.text = ConditionCodesDataModel.condition3xx
     }
     
     // MARK: Animation functions
