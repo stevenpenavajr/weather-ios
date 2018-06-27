@@ -9,12 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-class WeatherDataModel {
-    var temperature           :Int            = 0
-    var city                  :String         = ""
-    var primaryConditions     :[Int]          = []
-    var currentDescription    :String         = ""
-    var currentRecommendation :String         = ""
+public struct WeatherDataModel {
+    static var temperature           :Int            = 0
+    static var city                  :String         = ""
+    static var primaryConditions     :[Int]          = []
+    static var currentDescription    :String         = ""
+    static var currentRecommendation :String         = ""
     
     /**
      * @title   : createConditionHierarchy(json, identifier)
@@ -25,7 +25,7 @@ class WeatherDataModel {
      *              identifier = should be "weather" to narrow JSON down
      * @return  : [Int] - an array of indexes with 0th index being most prominent
      **/
-    func createConditionHierarchy(json: JSON, identifier: String) -> [Int] {
+    static func createConditionHierarchy(json: JSON, identifier: String) -> [Int] {
         
         var conditionArray : [Int] = []
         

@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     let API_KEY     = "14353c70d516758f4e44812a41d5ecb0"
     
     let locationManager = CLLocationManager()
-    let weatherDataModel = WeatherDataModel()
     
     /**
      * @title   : viewDidLoad()
@@ -87,11 +86,13 @@ class ViewController: UIViewController {
      **/
     func updateWeatherDataModel(json : JSON) {
         if let tempResult                          = json["main"]["temp"].double {
-            weatherDataModel.temperature           = Int(tempResult)
-            weatherDataModel.city                  = json["name"].stringValue
-            weatherDataModel.primaryConditions     = weatherDataModel.createConditionHierarchy(json: json, identifier: "weather") // to be used with recommendation choosing algorithm
-            weatherDataModel.currentDescription    = json["weather"][0]["description"].stringValue
+            WeatherDataModel.temperature           = Int(tempResult)
+            WeatherDataModel.city                  = json["name"].stringValue
+            WeatherDataModel.primaryConditions     = WeatherDataModel.createConditionHierarchy(json: json, identifier: "weather") // to be used with recommendation choosing algorithm
+            print(WeatherDataModel.primaryConditions)
+            WeatherDataModel.currentDescription    = json["weather"][0]["description"].stringValue
 //            weatherDataModel.currentRecommendation = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "male")
+            ConditionCodesDataModel.genPhrasedBasedOnTemp(temp: 45, conditions: WeatherDataModel.primaryConditions, gender: "a")
             
             updateUIWithWeatherData()
         } else {
@@ -110,11 +111,12 @@ class ViewController: UIViewController {
      * @return  : none
      **/
     func updateUIWithWeatherData() {
-        cityLabel.text = weatherDataModel.city
-        tempLabel.text = String(weatherDataModel.temperature) + "º"
+        cityLabel.text = WeatherDataModel.city
+        tempLabel.text = String(WeatherDataModel.temperature) + "º"
 //        recommendationLabel.text = PhrasesDataModel.getPhraseToUse(temp: weatherDataModel.temperature, conditions: weatherDataModel.primaryConditions, gender: "Male")
-        weatherDescriptionLabel.text = weatherDataModel.currentDescription.capitalized
+        weatherDescriptionLabel.text = WeatherDataModel.currentDescription.capitalized
 //        weatherDescriptionLabel.text = ConditionCodesDataModel.condition3xx
+        
     }
     
     // MARK: Animation functions
