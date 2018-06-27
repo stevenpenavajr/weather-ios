@@ -12,14 +12,37 @@ import Foundation
 
 public struct ConditionCodesDataModel {
     
-    static let condition3xx = [Int:[String:[String]]]()
-    static let condition5xx = [Int:[String:[String]]]()
-    static let condition6xx = [Int:[String:[String]]]()
-    static let condition7xx = [Int:[String:[String]]]()
-    static let condition8xx = [Int:[String:[String]]]()
+    // Condition dictionaries are declared and defined under ../Model/Codes
     
-    
-    
+    static func genPhrasedBasedOnTemp(temp: Int, conditions: [Int], gender: String) {
+        
+        var randIndex = Int(arc4random_uniform(7))
+        
+        switch (temp) {
+            case 0...31:   // index 0
+//                print( condition2xx[conditions[0]]["0,31"][randIndex])
+                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
+            case 32...45:  // index 1
+                print()
+                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
+            case 46...57:  // index 2
+                print()
+                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
+            case 58...69:  // index 3
+                print()
+                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
+            case 70...85:  // index 4
+                print()
+                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
+            case 86...95:  // index 5
+                print()
+            case 96...120: // index 6
+                print()
+            default:
+                break
+        }
+    }
+
 //        // MARK: Clear Sky (800)
 //        public struct Code800 {
 //            static let temp32_49: [String] = [

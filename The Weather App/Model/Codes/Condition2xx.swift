@@ -1,7 +1,10 @@
 // File: Condition2xx.swift
-// Purpose: <enter purpose>
+// Purpose: Thunderstorm category
 // Date Created: 6/25/18
 // Created By: Steven Penava
+
+// Thunderstorm Category
+// TO-DO: Fill in phrases
 
 import Foundation
 
