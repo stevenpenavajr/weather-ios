@@ -14,33 +14,43 @@ public struct ConditionCodesDataModel {
     
     // Condition dictionaries are declared and defined under ../Model/Codes
     
-    static func genPhrasedBasedOnTemp(temp: Int, conditions: [Int], gender: String) {
+    static func genPhrasedBasedOnTemp(temp: Int, conditions: [Int], gender: String) -> String {
         
-        var randIndex = Int(arc4random_uniform(7))
+        var randIndex = Int(arc4random_uniform(1))
+        print(conditions)
+        print(temp)
         
         switch (temp) {
-            case 0...31:   // index 0
-//                print( condition2xx[conditions[0]]["0,31"][randIndex])
-                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
-            case 32...45:  // index 1
+            case 0...31:
+                print(conditionPhraseDictionary[conditions[0]]!["0,31"]![randIndex])
+                return conditionPhraseDictionary[conditions[0]]!["0,31"]![randIndex]
+            case 32...45:
                 print()
-                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
-            case 46...57:  // index 2
+                print(conditionPhraseDictionary[conditions[0]]!["32,45"]![randIndex])
+                return conditionPhraseDictionary[conditions[0]]!["32,45"]![randIndex]
+            case 46...57:
                 print()
-                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
-            case 58...69:  // index 3
+                print(conditionPhraseDictionary[conditions[0]]!["46,57"]![randIndex])
+                return conditionPhraseDictionary[conditions[0]]!["46,57"]![randIndex]
+            case 58...69:
                 print()
-                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
-            case 70...85:  // index 4
+                print(conditionPhraseDictionary[conditions[0]]!["58,69"]![randIndex])
+                return conditionPhraseDictionary[conditions[0]]!["58,69"]![randIndex]
+            case 70...85:
                 print()
-                print(condition8xx[conditions[0]]!["0,31"]![randIndex])
-            case 86...95:  // index 5
+                print(conditionPhraseDictionary[conditions[0]]!["70,85"]![randIndex])
+                return conditionPhraseDictionary[conditions[0]]!["70,85"]![randIndex]
+            case 86...95:
                 print()
-            case 96...120: // index 6
+                return conditionPhraseDictionary[conditions[0]]!["86,95"]![randIndex]
+            case 96...120:
+                return conditionPhraseDictionary[conditions[0]]!["96,120"]![randIndex]
                 print()
             default:
                 break
+            
         }
+        return ""
     }
 
 //        // MARK: Clear Sky (800)
